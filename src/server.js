@@ -29,4 +29,12 @@ app.get("/api/articles", (req, res) => {
   res.status(200).send(articleData);
 });
 
+app.post("/api/articles", (req, res) => {
+  const articles = [];
+  for (let id of req.body) {
+    articles.push(articleData.find(p => p.id === id));
+  }
+  res.status(200).send(articles);
+});
+
 app.listen(8000, () => console.log("Listening on port 8000."));
