@@ -18,7 +18,11 @@ app.post("/api/articles/:id/upvote", (req, res) => {
 
 app.get("/api/article/:id", (req, res) => {
   let article = articleData.find(p => p.id === req.params.id);
-  res.status(200).send(article);
+  if (article === undefined) {
+    res.sendStatus(404);
+  } else {
+    res.status(200).send(article);
+  }
 });
 
 app.get("/api/articles", (req, res) => {
