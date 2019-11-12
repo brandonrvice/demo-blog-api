@@ -4,84 +4,79 @@ import LoggingController from "./LoggingController";
 const log = new LoggingController();
 
 class ArticleController {
-  async upvote(req, res) {
+  constructor() {
+    this.upvote = this.upvote.bind(this);
+    this.addComment = this.addComment.bind(this);
+    this.deleteAllComments = this.deleteAllComments.bind(this);
+    this.getAllArticles = this.getAllArticles.bind(this);
+    this.getArticleById = this.getArticleById.bind(this);
+    this.getArticlesByIds = this.getArticlesByIds.bind(this);
+  }
+
+  async withRepository(operations, res) {
     try {
       const articleRepository = new ArticleRepository();
-      const { id } = req.params;
-      const upvotes = await articleRepository.upvote(id);
-      res.status(200).send(upvotes);
+      await operations(articleRepository);
     } catch (err) {
       log.error(err);
       res.status(500).send({ message: "A system error occurred.", error: err.message });
     }
   }
 
-  async getArticleById(req, res) {
-    try {
-      const articleRepository = new ArticleRepository();
+  async upvote(req, res) {
+    this.withRepository(async repository => {
       const { id } = req.params;
-      let article = await articleRepository.getArticleById(id);
+      const upvotes = await repository.upvote(id);
+      res.status(200).send(upvotes);
+    }, res);
+  }
+
+  async getArticleById(req, res) {
+    this.withRepository(async repository => {
+      const { id } = req.params;
+      let article = await repository.getArticleById(id);
       if (article === undefined) {
         res.sendStatus(404);
       } else {
         res.status(200).send(article);
       }
-    } catch (err) {
-      log.error(err);
-      res.status(500).send({ message: "A system error occurred.", error: err.message });
-    }
+    }, res);
   }
 
   async getAllArticles(req, res) {
-    try {
-      const articleRepository = new ArticleRepository();
-      const articles = await articleRepository.getAllArticles();
+    this.withRepository(async repository => {
+      const articles = await repository.getAllArticles();
       res.status(200).send(articles);
-    } catch (err) {
-      log.error(err);
-      res.status(500).send({ message: "A system error occurred.", error: err.message });
-    }
+    }, res);
   }
 
   async getArticlesByIds(req, res) {
-    try {
-      const articleRepository = new ArticleRepository();
+    this.withRepository(async repository => {
       const articleIds = req.body;
       const articles = [];
       for (let id of articleIds) {
-        let article = await articleRepository.getArticleById(id);
+        let article = await repository.getArticleById(id);
         articles.push(article);
       }
       res.status(200).send(articles);
-    } catch (err) {
-      log.error(err);
-      res.status(500).send({ message: "A system error occurred.", error: err.message });
-    }
+    }, res);
   }
 
   async addComment(req, res) {
-    try {
+    this.withRepository(async repository => {
       const { username, text } = req.body;
       const { id } = req.params;
-      const articleRepository = new ArticleRepository();
-      const comments = await articleRepository.addComment(id, { username, text });
+      const comments = await repository.addComment(id, { username, text });
       res.status(200).send(comments);
-    } catch (err) {
-      log.error(err);
-      res.status(500).send({ message: "A system error occurred.", error: err.message });
-    }
+    }, res);
   }
 
   async deleteAllComments(req, res) {
-    try {
+    this.withRepository(async repository => {
       const { id } = req.params;
-      const articleRepository = new ArticleRepository();
-      await articleRepository.deleteAllComments(id);
+      await repository.deleteAllComments(id);
       res.sendStatus(200);
-    } catch (err) {
-      log.error(err);
-      res.status(500).send({ message: "A system error occurred.", error: err.message });
-    }
+    }, res);
   }
 }
 
