@@ -1,45 +1,45 @@
 import MongoController from "./MongoController";
 
 class ArticleRepository {
+  constructor() {
+    this.upvote = this.upvote.bind(this);
+    this.getAllArticles = this.getAllArticles.bind(this);
+    this.getArticleById = this.getArticleById.bind(this);
+    this.addComment = this.addComment.bind(this);
+    this.deleteAllComments = this.deleteAllComments.bind(this);
+    this.mongo = new MongoController("my_blog", "articles");
+  }
+
   async getArticleById(id) {
-    const db = await MongoController.getDb("my_blog");
-    const article = await db.collection("article-data").findOne({ id: id });
-    return article;
+    return await this.mongo.withCollection(async col => {
+      return await col.findOne({ id: id });
+    });
   }
 
   async getAllArticles() {
-    const db = await MongoController.getDb("my_blog");
-    const articles = await db
-      .collection("article-data")
-      .find({})
-      .toArray();
-    return articles;
+    return await this.mongo.withCollection(async col => {
+      return await col.find({}).toArray();
+    });
   }
 
   async addComment(id, comment) {
-    const db = await MongoController.getDb("my_blog");
-    await db.collection("article-data").updateOne({ id: id }, { $push: { comments: comment } });
-    const comments = await db
-      .collection("article-data")
-      .findOne({ id: id }, { projection: { comments: 1 } });
-    return comments;
+    return await this.mongo.withCollection(async col => {
+      await col.updateOne({ id: id }, { $push: { comments: comment } });
+      return col.findOne({ id: id }, { projection: { comments: 1 } });
+    });
   }
 
   async deleteAllComments(id) {
-    const db = await MongoController.getDb("my_blog");
-    await db.collection("article-data").updateOne({ id: id }, { $set: { comments: [] } });
+    await this.mongo.withCollection(async col => {
+      await col.updateOne({ id: id }, { $set: { comments: [] } });
+    });
   }
 
   async upvote(id) {
-    const db = await MongoController.getDb("my_blog");
-    await db.collection("article-data").update({ id: id }, { $inc: { upvotes: 1 } });
-
-    const upvotes = await db
-      .collection("article-data")
-      .findOne({ id: id }, { projection: { upvotes: 1 } });
-
-    console.log(upvotes);
-    return upvotes;
+    return await this.mongo.withCollection(async col => {
+      await col.updateOne({ id: id }, { $inc: { upvotes: 1 } });
+      return await col.findOne({ id: id }, { projection: { upvotes: 1 } });
+    });
   }
 }
 
