@@ -10,6 +10,12 @@ class ArticleRepository {
     this.mongo = new MongoController("demo-blog", "articles");
   }
 
+  async healthCheck() {
+    return await this.mongo.withCollection(async col => {
+      return await col.countDocuments();
+    });
+  }
+
   async getArticleById(id) {
     return await this.mongo.withCollection(async col => {
       return await col.findOne({ id: id });

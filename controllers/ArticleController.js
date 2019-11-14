@@ -5,6 +5,7 @@ const log = new LoggingController();
 
 class ArticleController {
   constructor() {
+    this.healthCheck = this.healthCheck.bind(this);
     this.upvote = this.upvote.bind(this);
     this.addComment = this.addComment.bind(this);
     this.deleteAllComments = this.deleteAllComments.bind(this);
@@ -21,6 +22,13 @@ class ArticleController {
       log.error(err);
       res.status(500).send({ message: "A system error occurred.", error: err.message });
     }
+  }
+
+  async healthCheck(_, res) {
+    this.withRepository(async repository => {
+      const count = await repository.healthCheck();
+      res.status(200).send({ count: count });
+    }, res);
   }
 
   async upvote(req, res) {
@@ -43,7 +51,7 @@ class ArticleController {
     }, res);
   }
 
-  async getAllArticles(req, res) {
+  async getAllArticles(_, res) {
     this.withRepository(async repository => {
       const articles = await repository.getAllArticles();
       res.status(200).send(articles);

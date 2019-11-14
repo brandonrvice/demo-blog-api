@@ -3,6 +3,7 @@ import ArticleController from "../controllers/ArticleController";
 
 const router = express.Router();
 const articleController = new ArticleController();
+router.get("/healthcheck", articleController.healthCheck);
 router.get("/articles", articleController.getAllArticles);
 router.get("/article/:id", articleController.getArticleById);
 router.post("/articles", articleController.getArticlesByIds);
