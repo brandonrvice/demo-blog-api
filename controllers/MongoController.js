@@ -9,23 +9,23 @@ class MongoController {
   }
 
   async withCollection(operations) {
-    const db = await MongoController.getDb(this.dbname);
+    const client = await this.connect();
+    const db = await client.db(this.dbname);
     const col = db.collection(this.collection);
-    return await operations(col);
+    const result = await operations(col);
+    client.close();
+    return result;
   }
 
   async withDB(operations) {
-    const db = await MongoController.getDb(this.dbname);
-    return operations(db);
+    const client = await this.connect();
+    const db = await client.db(this.dbname);
+    const result = await operations(db);
+    client.close();
+    return result;
   }
 
-  static async getDb(name) {
-    const client = await MongoController.connect();
-    const db = client.db(name);
-    return db;
-  }
-
-  static async connect() {
+  async connect() {
     const client = await MongoClient.connect(process.env.MONGODB_CONNECTION_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true
