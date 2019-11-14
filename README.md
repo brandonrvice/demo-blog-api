@@ -1,3 +1,3 @@
 ## Demo Blog
 
-[Click here to see the demo](https://d1c9scs3tldifh.cloudfront.net)
+[Click here to see the demo](http://brandonrvice-demo-blog.s3-website-us-west-2.amazonaws.com)
