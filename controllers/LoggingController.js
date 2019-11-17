@@ -1,4 +1,4 @@
-import winston from "winston";
+const winston = require("winston");
 
 class LoggingController {
   constructor() {
@@ -12,4 +12,4 @@ class LoggingController {
   }
 }
 
-export default LoggingController;
+module.exports = LoggingController;

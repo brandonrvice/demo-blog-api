@@ -1,4 +1,4 @@
-import MongoController from "./MongoController";
+const MongoController = require("./MongoController");
 
 class ArticleRepository {
   constructor() {
@@ -49,4 +49,4 @@ class ArticleRepository {
   }
 }
 
-export default ArticleRepository;
+module.exports = ArticleRepository;

@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+const { MongoClient } = require("mongodb");
 
 class MongoController {
   constructor(dbname, collection) {
@@ -34,4 +34,4 @@ class MongoController {
   }
 }
 
-export default MongoController;
+module.exports = MongoController;

@@ -1,5 +1,5 @@
-import ArticleRepository from "./ArticleRepository";
-import LoggingController from "./LoggingController";
+const ArticleRepository = require("./ArticleRepository");
+const LoggingController = require("./LoggingController");
 
 const log = new LoggingController();
 
@@ -29,6 +29,14 @@ class ArticleController {
       const count = await repository.healthCheck();
       res.status(200).send({ count: count });
     }, res);
+  }
+
+  async helloWorld(_, res) {
+    res.status(200).send("Hello back, my fine friend!");
+  }
+
+  async connectionInfo(_, res) {
+    res.status(200).send(process.env.MONGODB_CONNECTION_STRING);
   }
 
   async upvote(req, res) {
@@ -88,4 +96,4 @@ class ArticleController {
   }
 }
 
-export default ArticleController;
+module.exports = ArticleController;
