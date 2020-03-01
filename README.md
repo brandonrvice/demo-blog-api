@@ -1,3 +1,3 @@
-## Demo Blog
+## fuzzle.xyz
 
-[Click here to see the demo](https://demo-blog.brandonv.io)
+[fuzzle.xyz](https://fuzzle.xyz)
