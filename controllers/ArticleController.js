@@ -25,14 +25,14 @@ class ArticleController {
   }
 
   async healthCheck(_, res) {
-    this.withRepository(async repository => {
+    this.withRepository(async (repository) => {
       const count = await repository.healthCheck();
       res.status(200).send({ count: count });
     }, res);
   }
 
   async helloWorld(_, res) {
-    res.status(200).send("Hello back, my fine friend!");
+    res.status(200).send("Hello back, my fine friend! V1111");
   }
 
   async connectionInfo(_, res) {
@@ -40,7 +40,7 @@ class ArticleController {
   }
 
   async upvote(req, res) {
-    this.withRepository(async repository => {
+    this.withRepository(async (repository) => {
       const { id } = req.params;
       const upvotes = await repository.upvote(id);
       res.status(200).send(upvotes);
@@ -48,7 +48,7 @@ class ArticleController {
   }
 
   async getArticleById(req, res) {
-    this.withRepository(async repository => {
+    this.withRepository(async (repository) => {
       const { id } = req.params;
       let article = await repository.getArticleById(id);
       if (article === undefined) {
@@ -60,14 +60,14 @@ class ArticleController {
   }
 
   async getAllArticles(_, res) {
-    this.withRepository(async repository => {
+    this.withRepository(async (repository) => {
       const articles = await repository.getAllArticles();
       res.status(200).send(articles);
     }, res);
   }
 
   async getArticlesByIds(req, res) {
-    this.withRepository(async repository => {
+    this.withRepository(async (repository) => {
       const articleIds = req.body;
       const articles = [];
       for (let id of articleIds) {
@@ -79,7 +79,7 @@ class ArticleController {
   }
 
   async addComment(req, res) {
-    this.withRepository(async repository => {
+    this.withRepository(async (repository) => {
       const { username, text } = req.body;
       const { id } = req.params;
       const comments = await repository.addComment(id, { username, text });
@@ -88,7 +88,7 @@ class ArticleController {
   }
 
   async deleteAllComments(req, res) {
-    this.withRepository(async repository => {
+    this.withRepository(async (repository) => {
       const { id } = req.params;
       await repository.deleteAllComments(id);
       res.sendStatus(200);

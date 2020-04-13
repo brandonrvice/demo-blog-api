@@ -1,4 +1,0 @@
-aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 612370013845.dkr.ecr.us-west-2.amazonaws.com/fuzzle-api
-docker build -t fuzzle-api .
-docker tag fuzzle-api:latest 612370013845.dkr.ecr.us-west-2.amazonaws.com/fuzzle-api:latest
-docker push 612370013845.dkr.ecr.us-west-2.amazonaws.com/fuzzle-api:latest
