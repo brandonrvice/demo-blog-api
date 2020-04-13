@@ -7,7 +7,7 @@ class ArticleRepository {
     this.getArticleById = this.getArticleById.bind(this);
     this.addComment = this.addComment.bind(this);
     this.deleteAllComments = this.deleteAllComments.bind(this);
-    this.mongo = new MongoController("demo-blog", "articles");
+    this.mongo = new MongoController("fuzzle", "articles");
   }
 
   async healthCheck() {
