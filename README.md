@@ -22,8 +22,7 @@ MongoDB running on MongoDB Atlas
 
 ![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot02.png)
 
-![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/
-master/public/images/screenshot03.png)
+![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot03.png)
 
 ![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot04.png)
 
