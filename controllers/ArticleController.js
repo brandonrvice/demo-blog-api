@@ -32,7 +32,7 @@ class ArticleController {
   }
 
   async helloWorld(_, res) {
-    res.status(200).send("Hello back, my fine friend! V1111");
+    res.status(200).send("Hello back, my fine friend! V0143-xsdfasfsf");
   }
 
   async connectionInfo(_, res) {
