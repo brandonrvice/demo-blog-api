@@ -17,3 +17,9 @@ NodeJS running in a docker container on AWS ECS. API endpoint is API Gateway usi
 MongoDB running on MongoDB Atlas
 
 ![Architecture](arch.png?raw=true "Architecture")
+
+![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot01.png)
+
+![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot02.png)
+
+![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot03.png)
