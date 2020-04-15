@@ -1,20 +1,27 @@
-## fuzzle.xyz
+# fuzzle.xyz
 
-[fuzzle.xyz](https://fuzzle.xyz)
+This is the repository for a reallo.xyz. A estate application I built to use as a portfolio project and showcase proficiency as a AWS Solutions Architect and Fullstack Software Engineer.
 
-## Architecture
+Access the running application here:  
+[https://fuzzle.xyz](https://fuzzle.xyz)
 
-### Static Website
+username/password = reallo/reallo
 
-ReactJS running on AWS S3 using Route 53, CloudFront and SSL using Certificate Manager
+## architecture - front end | [reallo-app](https://github.com/brandonvio/fuzzle-app)
 
-### API
+- React - front end framework
+- AWS S3 - static website hosting
+- AWS Route53 - domain hosting
+- AWS CloudFront - content distribution
+- AWS Certificate Manager - SSL certificate
 
-NodeJS running in a docker container on AWS ECS. API endpoint is API Gateway using HTTP API.
+## architecture - back end | [reallo-api](https://github.com/brandonvio/fuzzle-api)
 
-### Data
-
-MongoDB running on MongoDB Atlas
+- NodeJS - javascript runtime
+- Docker - containerization
+- AWS ECS - AWS container orchestration
+- AWS API Gateway | HTTP API - api service
+- MongoDB on Atlas - serverless nosql database service
 
 ![Architecture](arch.png?raw=true "Architecture")
 
