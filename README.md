@@ -5,8 +5,6 @@ Lightweight blogging. Built with care on AWS and MongoDB.
 Access the running application here:  
 [https://fuzzle.xyz](https://fuzzle.xyz)
 
-username/password = reallo/reallo
-
 ## architecture - front end | [fuzzle-app](https://github.com/brandonvio/fuzzle-app)
 
 - React - front end framework
