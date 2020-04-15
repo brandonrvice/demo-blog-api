@@ -7,7 +7,7 @@ Access the running application here:
 
 username/password = reallo/reallo
 
-## architecture - front end | [reallo-app](https://github.com/brandonvio/fuzzle-app)
+## architecture - front end | [fuzzle-app](https://github.com/brandonvio/fuzzle-app)
 
 - React - front end framework
 - AWS S3 - static website hosting
@@ -15,7 +15,7 @@ username/password = reallo/reallo
 - AWS CloudFront - content distribution
 - AWS Certificate Manager - SSL certificate
 
-## architecture - back end | [reallo-api](https://github.com/brandonvio/fuzzle-api)
+## architecture - back end | [fuzzle-api](https://github.com/brandonvio/fuzzle-api)
 
 - NodeJS - javascript runtime
 - Docker - containerization
