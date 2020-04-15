@@ -1,6 +1,6 @@
 # fuzzle.xyz
 
-This is the repository for a reallo.xyz. A estate application I built to use as a portfolio project and showcase proficiency as a AWS Solutions Architect and Fullstack Software Engineer.
+Lightweight blogging. Built with care on AWS and MongoDB.
 
 Access the running application here:  
 [https://fuzzle.xyz](https://fuzzle.xyz)
