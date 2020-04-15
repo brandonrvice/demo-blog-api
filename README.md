@@ -12,6 +12,7 @@ Access the running application here:
 - AWS Route53 - domain hosting
 - AWS CloudFront - content distribution
 - AWS Certificate Manager - SSL certificate
+- Jenkins - continuous integration/continuous delivery
 
 ## architecture - back end | [fuzzle-api](https://github.com/brandonvio/fuzzle-api)
 
@@ -20,6 +21,7 @@ Access the running application here:
 - AWS ECS - AWS container orchestration
 - AWS API Gateway | HTTP API - api service
 - MongoDB on Atlas - serverless nosql database service
+- Jenkins - continuous integration/continuous delivery
 
 ![Architecture](arch.png?raw=true "Architecture")
 
