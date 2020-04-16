@@ -23,7 +23,7 @@ Access the running application here:
 - MongoDB on Atlas - serverless nosql database service
 - Jenkins - continuous integration/continuous delivery
 
-![Architecture](arch.png?raw=true "Architecture")
+![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/arch.png "Architecture")
 
 ![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot01.png)
 
@@ -34,3 +34,7 @@ Access the running application here:
 ![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot04.png)
 
 ![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot05.png)
+
+![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot06.png)
+
+![Architecture](https://raw.githubusercontent.com/brandonvio/fuzzle-app/master/public/images/screenshot07.png)
